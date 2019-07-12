@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700&display=swap" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+		<script src="https://d3js.org/d3.v5.min.js"></script>
+
+
+		<title>AZancope - Desenvolvimento web</title>
+	</head>
+	<body>
+		<script src="preco.js"></script>
+		<script src="states.js"></script>
+		<script src="percentual.js"></script>
+		<div class="header">
+		<!--sistema de grid-->
+		<!--precisa ter 12 colunas os numeros devem somar 12-->
+			<div class = "linha">
+				<header>
+					<div class="coluna col3">
+						<h1>Ana Zancope</h1>
+					</div>
+					<div class="coluna col9	">
+						<ul class="menu inline sem-marcador">
+							<li><a href="#preco_history">Gas Price History</a></li>
+							<li><a href="#mapa">US States Gas Price</a></li>
+							<li><a href="#mapa">Component gas price</a></li>
+						</ul>
+					</div>
+				</header>
+			</div>	
+		</div>
+
+
+		<div class = "linha">
+			<section>
+				<div class="coluna col12">
+					<h2 class="Inicio">Gasoline Prices USA </h2>
+					<img class='center' src="img/pump.jpg" alt="" />
+					<p> According to <a href="https://news.gallup.com/poll/241805/commuters-work-without-cars-past.aspx?g_source=link_NEWSV9&g_medium=NEWSFEED&g_campaign=item_&g_content=More%2520U.S.%2520Commuters%2520Get%2520to%2520Work%2520Without%2520Cars%2520Than%2520in%2520Past">GALLUP</a> 83% of the americans go to work by car. Although the study shows that the number of people has opting to use public transportation has increased the the number of cars in US is still very signinificant. According to the <a href = "https://www.fhwa.dot.gov/policyinformation/statistics/2017/mv1.cfm"> Federal Highway Administration</a> in the USA there were 111,177,029 automobiles (private, comercial and public owned) registred in 2017, and a total of 272,480,899 vehicles (automobile, buses, trucks, motorcycles).</p>
+					<p> The fact that many people depend on cars in addtion to the price spike of regular gas between Feburary and May 2019, from 2.309 to 2.859, indicating an increase of almost 24% ( U.S. Energy Information Administration) caught my attention, since it means that people have been spending more on transportation in the last few months and it can affect their finances, implying the importance of this study. For this analysis it were used two main sources the <a href="https://www.eia.gov/"> U.S. Energy Information Administration</a> and <a href="https://gasprices.aaa.com/">AAA Gas prices</a>.</p>
+					<p>At first, I wanted to conduct the analysis based on the price in each state, however, the data available on EIA isn't collected by state since 2011 and AAA gas only shown the current gas price. In addition, most of the datasets classified by state were paid, thus, after searching for gas prices by state I could find some news containing the data from AAA for the year 2018 and 2017.</p>
+					<p>It is interesting to how the gas value has increased over the years, however, those values can't be compared directly, since we have to consider the inflation. In order to adjust the prices before 2019, the following was used.</p>
+					<img class='center' src="img/Eq1.png" alt="" />
+					<p>Where CPI is the Consumer Price Index and is a measure of the average change in prices over time in a fixed market of goods and services. The values for CPIs were obtained from the <a href="https://www.usinflationcalculator.com/">US Inflation Calculator</a>, although we have CPI's from 1990 until today, I opt to use data from 1992 until 2019, because on the original dataset for the gasoline prices there were some missing entries between 1990 and 1991, since it is a monthly dataset. The graph bellow shows the nominal value of gasoline per gallon in dollars, and the 2019 Values button changes it for a may 2019 base dollar, and Both Values return to the original gaph displays nominal  and 2019 Dollar values.</p>
+					
+					<a id="preco_history"></a>
+					<div class="preco1993_2019">
+
+						<button type = "button" class="tudo">Both Values</button>
+						<button type = "button" class="real">2019 Values</button>
+						<button type = "button" class="nominal">Nominal Values</button><br>
+						
+						
+					</div> <!--div where the graph of dollar are input !-->
+					<p>The map bellor display the states gasoline prices in 2019 the most expensive (color pink) to the least expensive (strong green). From it we can see that California presents the most expensive gas in US, which according to the dataset is 3.776 US$/gallon, followed by Hawaii (3.646 US$/gallon) and Washington (3.352 US$/gallon). The least expensive state is Missipi 2.347 US$/gallon, Alabama (2.368 US$/gallon)and Arkansas (2.371 US$/gallon). It is interesting to see that the difference between the California's gas price is 60% higher than Missipi's, which is an indicator of the difference of the life cost around US. The average Price is 2.751 US$/gallon, which is still 27% lower than California's price, which indicates great range os the gas price around US.</p>
+					<a id="mapa"></a>
+					<div class="mapaEstadosUnidos"></div><!--div to input us map !-->
+					<p>EIA records the percentage paid by the population for a gallon of regular gasoline, its dataset records this pecentage values from January 2000. In the pie chart bellow, we notice that most of the value comes from the crude oil with 53.7% of the price, however, by taking a look in the dataset this isn't the variable that presents the biggest range, its actually, the distribuition and marketing values that presents the greatest range, since it was recorded to be 8.0% in April this year and 13.7% for may 2019. This indicates one of the reasons for the value spike in the first semester 2019. In addition, it is interesting to see that today, refining and taxes are similar, however, if we study futher this dataset, we can notice that taxes have been getting smaller, while the price for refining is increasing. The hitorical data of gasoline pump components is available at <a href="https://www.eia.gov/petroleum/gasdiesel/gaspump_hist.php">EIA's website.</a> </p>
+					<a id="pie"></a>
+					<div class='circular'></div>
+				</div>
+			</section>
+		</div>
+		<div class="footer">
+			<div class="linha">
+				<div class="coluna col12">
+					<span>&copy; 2019 AZancope</span>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
